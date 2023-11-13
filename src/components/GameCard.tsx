@@ -15,12 +15,13 @@ const GameCard = ({ title, fileSize, platform, downloadlink }: GameProps) => {
   };
 
   return (
-    <Card variant="outlined">
+    <Card variant="outlined" id="card">
       
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
+          justifyContent: 'space-between',
           height: '100%',
         }}
       >
@@ -31,14 +32,17 @@ const GameCard = ({ title, fileSize, platform, downloadlink }: GameProps) => {
             color="white"
             sx={{
               display: 'flex',
-              padding: '20px',
+              justifyContent: 'center',
               textAlign: 'center',
             }}
           >
             {title}
           </Typography>
-          <Typography color='grey'>Files size: {fileSize}</Typography>
-          <Typography color='grey'>Platform: {platform}</Typography>
+          
+          <Box sx={{marginTop: "20px"}}>
+            <Typography color='grey' sx={{padding: 0}}>Files size: {fileSize}</Typography>
+            <Typography color='grey' sx={{padding: 0}}>Platform: {platform}</Typography>
+          </Box>
 
         </CardContent>
 

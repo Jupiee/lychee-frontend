@@ -24,9 +24,12 @@ const SearchBox = ({ onSearch }: SearchBoxProps) => {
         '@media (max-width: 576px)': {
           width:300
         },
-        '@media (max-width: 375px)': {
-          width:300
-        }
+        '@media (max-width: 1024px)': {
+          width:400
+        },
+        '@media (max-width: 2560px)': {
+          width:550
+        },
         }}
         spellCheck={false}
         onChange={(e) => setValue(e.target.value)}
