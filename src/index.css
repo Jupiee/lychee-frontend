@@ -45,6 +45,31 @@ p {
   @media (max-width: 375px) {
     #card {
       height: 250px;
-      max-width: 100%;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 320px) {
+    #card {
+      height: 300px;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 2560px) {
+    #alert {
+      width: 30%;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    #alert {
+      width: 50%;
+    }
+  }
+
+  @media (max-width: 576px) {
+    #alert {
+      width: 100%;
     }
   }

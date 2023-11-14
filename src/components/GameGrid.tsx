@@ -1,7 +1,8 @@
 import { useState } from "react"
 import GameCard from "./GameCard"
 import SearchBox from './SearchBox'
-import { Pagination, Grid, Box, Typography, CircularProgress } from '@mui/material';
+import Pagination from './Pagination'
+import { Grid, Box, Typography, CircularProgress, Alert, AlertTitle } from '@mui/material';
 import fetchGames from "../hooks/fetchGames";
 import fetchCount from "../hooks/fetchCount";
 
@@ -22,19 +23,17 @@ const GameGrid = () => {
 
   }
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = games.slice(indexOfFirstItem, indexOfLastItem);
-
-  // Change page
   const handlePageChange = (page: number) => {
 
     setCurrentPage(page);
     
   };
 
-  const totalPages = Math.ceil(games.length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = games.slice(indexOfFirstItem, indexOfLastItem);
 
+  const totalPages = Math.ceil(games.length / itemsPerPage);
 
   return (
     <>
@@ -49,11 +48,24 @@ const GameGrid = () => {
       }
 
       {loading ? (
+
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <CircularProgress sx={{ margin: "0 auto" }} />
         </Box>
+        
       ) : (
+
         <>
+
+          {query && games.length === 0 && (
+            <Box sx={{display: 'flex', justifyContent: 'center'}}>
+              <Alert id="alert" variant="outlined" severity="error">
+                <AlertTitle>Not Found</AlertTitle>
+                Maybe <strong>"{query}"</strong> exists in a different Universe
+              </Alert>
+            </Box>
+          )}
+
           <Grid container sx={{ margin: "32px 8px 32px" }}>
             <Grid container item spacing={3} xs={12}>
               {currentItems.map((game, index) => (
@@ -70,17 +82,17 @@ const GameGrid = () => {
           </Grid>
 
           {games.length > itemsPerPage && (
-            <Box sx={{ display: "flex", justifyContent: "center", marginBottom: 4 }}>
-              <Pagination
-                page={currentPage}
-                count={totalPages}
-                onChange={(_event: React.ChangeEvent<unknown>, page: number) => handlePageChange(page)}
-                color="primary"
-              />
-            </Box>
+            <Pagination
+              page={currentPage}
+              totalCount={totalPages}
+              handlePageChange={handlePageChange}
+            />
           )}
+
         </>
+
       )}
+
     </>
   );
 };
