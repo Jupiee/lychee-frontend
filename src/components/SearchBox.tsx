@@ -1,4 +1,5 @@
-import {Box, TextField} from '@mui/material';
+import {Box, TextField, InputAdornment, IconButton} from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
 
 interface SearchBoxProps {
@@ -33,7 +34,16 @@ const SearchBox = ({ onSearch }: SearchBoxProps) => {
         }}
         spellCheck={false}
         onChange={(e) => setValue(e.target.value)}
-        onKeyDown={(e) => e.key === 'Enter' && onSearch(value)}/>
+        onKeyDown={(e) => e.key === 'Enter' && onSearch(value)}
+        InputProps={{
+        startAdornment: (
+          <InputAdornment position='start'>
+            <IconButton onClick={() => onSearch(value)}>
+              <SearchIcon />
+            </IconButton>
+          </InputAdornment>
+        )
+      }}/>
         
     </Box>
 
