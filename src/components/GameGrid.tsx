@@ -58,12 +58,14 @@ const GameGrid = () => {
         <>
 
           {query && games.length === 0 && (
+            
             <Box sx={{display: 'flex', justifyContent: 'center'}}>
               <Alert id="alert" variant="outlined" severity="error">
                 <AlertTitle>Not Found</AlertTitle>
                 Maybe <strong>"{query}"</strong> exists in a different Universe
               </Alert>
             </Box>
+            
           )}
 
           <Grid container sx={{ margin: "32px 8px 32px" }}>

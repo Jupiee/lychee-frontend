@@ -6,6 +6,7 @@ import GameGrid from '../components/GameGrid'
 const Main = () => {
 
   return (
+    
     <>
 
       <AboutButton />
