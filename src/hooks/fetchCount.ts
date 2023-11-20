@@ -5,7 +5,7 @@ import { CanceledError } from "axios";
 const fetchCount= (query: string) => {
 
     const [count, setCount] = useState("");
-    const [_error, setError]= useState("");
+    const [error, setError]= useState("");
 
     useEffect(() => {
 
@@ -16,7 +16,7 @@ const fetchCount= (query: string) => {
             .catch((error) => {
 
                 if (error instanceof CanceledError) return;
-                setError(error.message);
+                setError("Something went wrong, please try again later.");
 
             })
 
@@ -24,7 +24,7 @@ const fetchCount= (query: string) => {
 
     }, [query]);
 
-    return {count};
+    return {count, error};
 
 }
 

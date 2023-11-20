@@ -13,7 +13,7 @@ const GameGrid = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  const {count}= fetchCount(query);
+  const {count, error}= fetchCount(query);
   const {games, loading}= fetchGames(query);
 
   const handleSearch= (value: string) => {
@@ -39,11 +39,21 @@ const GameGrid = () => {
     <>
       <SearchBox onSearch={handleSearch} />
 
-      {count && 
+      { error ? (
+
+        <Typography variant="h3" color="white" sx={{ margin: 2, textAlign: "center"}}>
+          {error}
+        </Typography>
+        
+        )
+      
+        : count && (
 
         <Typography variant="h3" color="white" sx={{ margin: 2, textAlign: "center"}}>
           {count}
         </Typography>
+
+        )
       
       }
 

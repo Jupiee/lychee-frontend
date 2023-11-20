@@ -30,7 +30,7 @@ const fetchGames= (query: string) => {
             .catch((error) => {
 
                 if (error instanceof CanceledError) return;
-                setError(error.message);
+                setError("Something went wrong, please try again later.");
 
             })
             .finally(() => setLoading(false));
