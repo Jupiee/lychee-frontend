@@ -74,7 +74,6 @@ const About = () => {
             <ol>
               <li><a href="https://myrient.erista.me/" target="_blank" rel="noreferrer" style={{color: "#2596be"}}>Myrient</a></li>
               <li><a href="https://edgeemu.net/" target="_blank" rel="noreferrer" style={{color: "#2596be"}}>Edge Emulation</a></li>
-              <li><a href="https://nopaystation.com/" target="_blank" rel="noreferrer" style={{color: "#2596be"}}>Nopaystation</a></li>
             </ol> 
 
           </Typography>
