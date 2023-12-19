@@ -10,15 +10,17 @@ import fetchCount from "../hooks/fetchCount";
 const GameGrid = () => {
 
   const [query, Setquery]= useState("");
+  const [platform_options, setPlatform_options]= useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
   const {count, error}= fetchCount(query);
-  const {games, loading}= fetchGames(query);
+  const {games, loading}= fetchGames(query, platform_options);
 
-  const handleSearch= (value: string) => {
+  const handleSearch= (value: string, options: string[]) => {
 
     Setquery(value);
+    setPlatform_options(options);
     setCurrentPage(1);
 
   }
