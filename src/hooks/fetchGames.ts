@@ -6,10 +6,8 @@ interface Game {
 
     name: string
     file_size: string
-    date_uploaded: string | null
     platforms: string
     download_links: string
-    thumbnail: string | null
   
   }
 
@@ -31,12 +29,6 @@ const fetchGames= (query: string, platform_options: string[]) => {
             if (platform_options.length === 1) {
 
                 options= platform_options[0];
-
-            }
-
-            else if (platform_options.length === 0) {
-
-                options= "All";
 
             }
 

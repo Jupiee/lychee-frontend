@@ -11,20 +11,38 @@ interface FilterSearchProps {
 
 const Filter = ({onFilter}: FilterSearchProps) => {
 
-    const [placeholder, setPlaceholder]= useState<string[]>(["All"]);
+    const [placeholder, setPlaceholder]= useState<string[]>([]);
 
     const handleChange = (event: SelectChangeEvent<typeof placeholder>) => {
 
       let {target: { value },} = event;
 
       const newValue = typeof value === "string" ? value.split(",") : value;
-      setPlaceholder(newValue);
-      onFilter(newValue as string[]);
+
+      if (newValue.length === 0) {
+
+        setPlaceholder(['All']);
+        onFilter(['All']);
+
+      }
+
+      else {
+
+        if (newValue.includes('All')) {
+
+          newValue.reverse();
+          newValue.pop();
+
+        }
+
+        setPlaceholder(newValue);
+        onFilter(newValue as string[]);
+
+      }
 
     }
 
     const names = [
-        'All',
         'PS1',
         'PS2',
         'PS3',
@@ -42,7 +60,8 @@ const Filter = ({onFilter}: FilterSearchProps) => {
         'SNES',
         'Gameboy',
         'Gameboy Color',
-        'Gameboy Advance'
+        'Gameboy Advance',
+        'Virtual Boy'
       ];
 
   return (
@@ -72,11 +91,17 @@ const Filter = ({onFilter}: FilterSearchProps) => {
 
                 if (selected.length === 0) {
 
-                  return 'Platform: ';
+                  return 'Platform: All';
 
                 }
-      
-                return 'Platform: ' + selected.join(', ');
+                
+                if (selected.length > 1) {
+
+                  return 'Platforms: ' + selected.join(', ');
+
+                }
+                
+                return 'Platform: ' + selected[0];
 
             }}
           >
