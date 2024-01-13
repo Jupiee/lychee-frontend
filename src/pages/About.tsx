@@ -7,8 +7,14 @@ const About = () => {
     <Box sx={{flexGrow: 1, display:'flex', justifyContent:'center', alignItems:'center'}}>
 
       <Grid container>
-        <Grid item xs={12} sx={{textAlign:'center', marginTop:'20px', marginBottom:'50px'}}>
+        <Grid item xs={12} sx={{textAlign:'center', marginTop:'20px', marginBottom:'10px'}}>
           <Typography variant="h2" color='primary'>Lychee Engine</Typography>
+        </Grid>
+
+        <Grid item xs={12} sx={{display:'flex', justifyContent:'center', textAlign:'left', marginBottom:'20px'}}>
+          <Typography variant="h6" color='white' component='p'>
+            Support the project by donating on <a href="https://ko-fi.com/U7U0EVFHA" target="_blank" rel="noreferrer" style={{color: "#2596be"}}>Ko-fi</a>, It will be appreciated and will help me keep the project alive.
+          </Typography>
         </Grid>
 
         <Grid item xs={12} sx={{textAlign:'center'}}>
@@ -49,7 +55,7 @@ const About = () => {
 
         <Grid item xs={12} sx={{display:'flex', justifyContent:'center', textAlign:'left'}}>
           <Typography variant="h6" color='white' component='p'>
-            The source code isn't available right now however I will open source the API and Scraper soon!
+            Yes! The <a href='https://github.com/Jupiee/lychee-scraper' target="_blank" rel="noreferrer" style={{color: "#2596be"}}>Scraper</a> and the <a href='https://github.com/Jupiee/open-lychee-api' target="_blank" rel="noreferrer" style={{color: "#2596be"}}>API</a> are open source and free to use.
           </Typography>
         </Grid>
 
@@ -121,4 +127,4 @@ const About = () => {
   
 }
 
-export default About
+export default About;

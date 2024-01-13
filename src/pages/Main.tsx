@@ -1,4 +1,4 @@
-import AboutButton from '../components/AboutButton'
+import SideButtons from '../components/SideButtons'
 import Logo from '../components/Logo'
 import GameGrid from '../components/GameGrid'
 
@@ -9,7 +9,7 @@ const Main = () => {
     
     <>
 
-      <AboutButton />
+      <SideButtons />
 
       <Logo />
 
