@@ -11,11 +11,12 @@ interface Game {
   
   }
 
-const fetchGames= (query: string, platform_options: string[]) => {
+const fetchGames= (query: string, platform_options: string[], search_type: string) => {
 
     const [games, setGames]= useState<Game[]>([]);
     const [_error, setError]= useState("");
     const [loading, setLoading] = useState(false)
+    const routes= {"Indexed Search": "indexedsearch", "Linear Search": "linearsearch"};
 
     
     useEffect(() => {
@@ -38,7 +39,7 @@ const fetchGames= (query: string, platform_options: string[]) => {
 
             }
 
-            apiClient.get('/search', {params: {name: query, platform: options}})
+            apiClient.get(`/${routes[search_type as keyof typeof routes]}`, {params: {name: query, platform: options}})
             .then((response) => setGames(response.data))
             .catch((error) => {
 
@@ -50,7 +51,7 @@ const fetchGames= (query: string, platform_options: string[]) => {
 
         }
 
-    }, [query, platform_options]);
+    }, [query, platform_options, search_type]);
 
     return {games, loading};
 

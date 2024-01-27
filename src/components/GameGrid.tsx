@@ -2,6 +2,7 @@ import { useState } from "react"
 import GameCard from "./GameCard"
 import SearchBox from './SearchBox'
 import Pagination from './Pagination'
+import SearchFilter from "./SearchFilter"
 import { Grid, Box, Typography, CircularProgress, Alert, AlertTitle } from '@mui/material';
 import fetchGames from "../hooks/fetchGames";
 import fetchCount from "../hooks/fetchCount";
@@ -11,11 +12,12 @@ const GameGrid = () => {
 
   const [query, Setquery]= useState("");
   const [platform_options, setPlatform_options]= useState<string[]>([]);
+  const [search_type, setSearch_type]= useState<string>("Indexed Search");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
   const {count, error}= fetchCount(query);
-  const {games, loading}= fetchGames(query, platform_options);
+  const {games, loading}= fetchGames(query, platform_options, search_type);
 
   const handleSearch= (value: string, options: string[]) => {
 
@@ -39,6 +41,8 @@ const GameGrid = () => {
 
   return (
     <>
+
+      <SearchFilter onFilter={setSearch_type} />
       <SearchBox onSearch={handleSearch} />
 
       { error ? (
