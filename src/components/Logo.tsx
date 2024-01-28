@@ -1,4 +1,4 @@
-import lychee from '../assets/lychee.webp'
+import lychee from '../assets/lychee.png'
 import { Box } from '@mui/material'
 
 const Logo = () => {
@@ -12,6 +12,7 @@ const Logo = () => {
           src={lychee}
           alt="lychee.png"
           draggable="false"
+          style={{height: '210px', width: '210px'}}
         />
       </a>
 
