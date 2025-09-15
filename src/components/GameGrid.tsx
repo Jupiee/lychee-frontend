@@ -85,9 +85,9 @@ const GameGrid = () => {
           )}
 
           <Grid container sx={{ margin: "32px 8px 32px" }}>
-            <Grid container item spacing={3} xs={12}>
+            <Grid container spacing={3} size={{xs: 12}}>
               {currentItems.map((game, index) => (
-                <Grid item xs={12} sm={6} md={6} lg={4} key={index}>
+                <Grid size={{xs:12, sm:6, md:6, lg:4}} key={index}>
                   <GameCard
                     title={game.name}
                     fileSize={game.file_size}
